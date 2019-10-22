@@ -23,17 +23,11 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script src="https://maps.google.com/maps/api/js?key=AIzaSyAPQXi7ZBZ73SPXi7JfHycSCi30thvQGCg&amp;libraries=places"></script>
-
-	<script src="../../../../global_assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/typeahead_addresspicker.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/location.js"></script>
-	<script src="../../../../global_assets/js/plugins/ui/prism.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script src="assets/js/app.js"></script>
-	<script src="../../../../global_assets/js/demo_pages/picker_location.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/form_layouts.js"></script>
 	<!-- /theme JS files -->
 
 </head>
@@ -409,7 +403,7 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="index.html" class="nav-link">
+							<a href="index2.php" class="nav-link">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard
@@ -418,26 +412,41 @@
 							</a>
 						</li>
 						
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-							<a href="#" class="nav-link"><i class="icon-select2"></i> <span>Maestros</span></a>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-user-tie"></i> <span>Maestros</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Pickers">
 								
-								<li class="nav-item"><a href="picker_location.html" class="nav-link active">Agregar Maestros</a></li>
-								<li class="nav-item"><a href="picker_color.html" class="nav-link">Editar Maestros</a></li>
+								<li class="nav-item"><a href="EditarMaestros.php" class="nav-link">Editar Maestros</a></li>
+								
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-insert-template"></i> <span>Alumnos</span></a>
+							<a href="#" class="nav-link"><i class="icon-users4"></i> <span>Alumnos</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Form layouts">
 								
-								<li class="nav-item"><a href="form_layout_horizontal.html" class="nav-link">Agregar Alumnos</a></li>
-								<li class="nav-item"><a href="form_layout_vertical.html" class="nav-link">Editar Alumnos</a></li>
+								<!--<li class="nav-item"><a href="form_layout_vertical_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>-->
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="AgregarAlumnos.php" class="nav-link">Agregar Alumnos</a></li>
+								<!--<li class="nav-item"><a href="form_layout_horizontal_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>-->
+								<li class="nav-item"><a href="EditarAlumnos.php" class="nav-link">Editar Alumnos</a></li>
+							</ul>
+						</li>
+
+
+
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-grid"></i> <span>Módulos</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Basic components">
+								<li class="nav-item"><a href="ListadoDeMaterias.php" class="nav-link">Materias</a></li>
+								<li class="nav-item"><a href="Grupos.php" class="nav-link">Grupos</a></li>
 								
 							</ul>
 						</li>
+
 						<!-- /forms -->
 
-					
+						
 
 					</ul>
 				</div>
@@ -457,7 +466,7 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Pickers</span> - Location</h4>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Agregar</span> - Alumnos</h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 
@@ -474,8 +483,8 @@
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="picker_location.html" class="breadcrumb-item">Pickers</a>
-							<span class="breadcrumb-item active">Location</span>
+							<a href="form_layout_horizontal.html" class="breadcrumb-item">Agregar Alumnos</a>
+							
 						</div>
 
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -597,26 +606,6 @@
 
 										
 
-										<!-- <div class="form-group row">
-											<label class="col-lg-3 col-form-label">SEXO:</label>
-											<div class="col-lg-9">
-												<div class="row">
-													
-
-													<div class="col-md-6">
-														<div class="form-group">
-															<select class="form-control form-control-lg" >
-																<option value="opt0"></option>
-							                                    <option value="opt1">Mujer</option>
-							                                    <option value="opt2">Hombre</option>
-							                                    
-							                                </select>
-														</div>
-	
-													</div>
-												</div>
-											</div>
-										</div> -->
 
 										<div class="form-group row">
 										<label class="col-lg-3 col-form-label">SEXO:</label>
@@ -659,7 +648,7 @@
 						
 									
 									<fieldset>
-					                	<legend class="font-weight-semibold"><i class="icon-truck mr-2"></i> INFORMACIÓN DEL DOMICILIO</legend>
+					                	<legend class="font-weight-semibold"><i class="icon-home9"></i> INFORMACIÓN DEL DOMICILIO</legend>
 
 					                	<div class="form-group row">
 											<label class="col-lg-3 col-form-label">ESTADO:</label>

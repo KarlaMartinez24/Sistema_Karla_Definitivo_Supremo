@@ -23,17 +23,15 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script src="https://maps.google.com/maps/api/js?key=AIzaSyAPQXi7ZBZ73SPXi7JfHycSCi30thvQGCg&amp;libraries=places"></script>
-
-	<script src="../../../../global_assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/typeahead_addresspicker.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/location.js"></script>
-	<script src="../../../../global_assets/js/plugins/ui/prism.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+	<script src="../../../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
 
 	<script src="assets/js/app.js"></script>
-	<script src="../../../../global_assets/js/demo_pages/picker_location.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/dashboard.js"></script>
 	<!-- /theme JS files -->
 
 </head>
@@ -409,35 +407,49 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="index.html" class="nav-link">
+							<a href="index.html" class="nav-link active">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard
-									<span class="d-block font-weight-normal opacity-50">No active orders</span>
 								</span>
 							</a>
 						</li>
 						
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-							<a href="#" class="nav-link"><i class="icon-select2"></i> <span>Maestros</span></a>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-user-tie"></i> <span>Maestros</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Pickers">
 								
-								<li class="nav-item"><a href="picker_location.html" class="nav-link active">Agregar Maestros</a></li>
 								<li class="nav-item"><a href="picker_color.html" class="nav-link">Editar Maestros</a></li>
+								
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-insert-template"></i> <span>Alumnos</span></a>
+							<a href="#" class="nav-link"><i class="icon-users4"></i> <span>Alumnos</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Form layouts">
 								
+								<!--<li class="nav-item"><a href="form_layout_vertical_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>-->
+								<li class="nav-item-divider"></li>
 								<li class="nav-item"><a href="form_layout_horizontal.html" class="nav-link">Agregar Alumnos</a></li>
+								<!--<li class="nav-item"><a href="form_layout_horizontal_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>-->
 								<li class="nav-item"><a href="form_layout_vertical.html" class="nav-link">Editar Alumnos</a></li>
+							</ul>
+						</li>
+
+
+
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-grid"></i> <span>Módulos</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Basic components">
+								<li class="nav-item"><a href="components_modals.html" class="nav-link">Materias</a></li>
+								<li class="nav-item"><a href="components_dropdowns.html" class="nav-link">Grupos</a></li>
 								
 							</ul>
 						</li>
-						<!-- /forms -->
 
-					
+
+						
+						
 
 					</ul>
 				</div>
@@ -457,7 +469,7 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Pickers</span> - Location</h4>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Home</span> - Dashboard</h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 
@@ -474,8 +486,7 @@
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="picker_location.html" class="breadcrumb-item">Pickers</a>
-							<span class="breadcrumb-item active">Location</span>
+							<span class="breadcrumb-item active">Dashboard</span>
 						</div>
 
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -512,260 +523,443 @@
 			<!-- Content area -->
 			<div class="content">
 
+				<!-- Main charts -->
+				<div class="row">
+					<div class="col-xl-7">
 
-				<!-- 2 columns form -->
-				<div class="card">
-					<div class="card-header header-elements-inline">
-						<h5 class="card-title"></h5>
-						<div class="header-elements">
-							<div class="list-icons">
-		                		<a class="list-icons-item" data-action="collapse"></a>
-		                		<a class="list-icons-item" data-action="reload"></a>
-		                		<a class="list-icons-item" data-action="remove"></a>
-		                	</div>
-	                	</div>
-					</div>
-
-					<div class="card-body">
-						<form action="#">
-							<div class="row">
-								<div class="col-md-6">
-									<fieldset>
-										<legend class="font-weight-semibold"><i class="icon-reading mr-2"></i>INFORMACIÓN PERSONAL</legend>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">NOMBRE:</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" placeholder="Eugene Kopyov">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CARRERA:</label>
-											<div class="col-lg-9">
-												<select data-placeholder="Selecciona tu carrera" class="form-control form-control-select2" data-fouc>
-													<option></option>
-													
-														<option value="AK">ITI</option>
-														<option value="HI">ISA</option>
-													
-													
-														<option value="CA">PYMES</option>
-														<option value="NV">MECATRONICA</option>
-														<option value="WA">MANUFACTURA</option>
-													
-													
-												</select>
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">MATRÍCULA:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="1930030" class="form-control">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CUATRIMESTRE:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="" class="form-control">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CORREO ELECTRÓNICO:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="eugene@kopyov.com" class="form-control">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CONTRASEÑA:</label>
-											<div class="col-lg-9">
-												<input type="password" class="form-control" placeholder="Contraseña">
-											</div>
-										</div>
-
-										
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">FECHA DE NACIMIENTO:</label>
-											<div class="col-lg-9">
-												<input type="date" class="form-control">
-											</div>
-										</div>
-
-										
-
-										<!-- <div class="form-group row">
-											<label class="col-lg-3 col-form-label">SEXO:</label>
-											<div class="col-lg-9">
-												<div class="row">
-													
-
-													<div class="col-md-6">
-														<div class="form-group">
-															<select class="form-control form-control-lg" >
-																<option value="opt0"></option>
-							                                    <option value="opt1">Mujer</option>
-							                                    <option value="opt2">Hombre</option>
-							                                    
-							                                </select>
-														</div>
-	
-													</div>
-												</div>
-											</div>
-										</div> -->
-
-										<div class="form-group row">
-										<label class="col-lg-3 col-form-label">SEXO:</label>
-											<div class="col-lg-9">
-												<div class="form-check form-check-inline">
-													<label class="form-check-label">
-														<input type="radio" class="form-input-styled" name="gender" checked data-fouc>
-														Hombre
-													</label>
-												</div>
-
-												<div class="form-check form-check-inline">
-													<label class="form-check-label">
-														<input type="radio" class="form-input-styled" name="gender" data-fouc>
-														Mujer
-													</label>
-												</div>
-											</div>
-										</div>
-
-
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">FOTOGRAFÍA:</label>
-											<div class="col-lg-9">
-												<input type="file" class="form-input-styled" data-fouc>
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">HOBBIES:</label>
-											<div class="col-lg-9">
-												<textarea rows="5" cols="5" class="form-control" placeholder="..."></textarea>
-											</div>
-										</div>
-							
-					</div>
-
-								<div class="col-md-6">
-						
-									
-									<fieldset>
-					                	<legend class="font-weight-semibold"><i class="icon-truck mr-2"></i> INFORMACIÓN DEL DOMICILIO</legend>
-
-					                	<div class="form-group row">
-											<label class="col-lg-3 col-form-label">ESTADO:</label>
-											<div class="col-lg-9">
-												<select data-placeholder="Selecciona tu estado" class="form-control form-control-select2" data-fouc>
-													<option></option>
-													
-														<option value="AK">Aguascalientes</option>
-														<option value="HI">Baja California</option>
-													
-													
-														<option value="CA">Colima</option>
-														<option value="NV">Chiapas</option>
-														<option value="WA">Ciudad de México</option>
-													
-													
-														<option value="AZ">Durango</option>
-														<option value="CO">Guerrero</option>
-														<option value="WY">Hidalgo</option>
-													
-													
-														<option value="AL">Jalisco</option>
-														<option value="AR">Morelos</option>
-														<option value="KY">Nayarit</option>
-													
-													
-														<option value="CT">Nuevo León</option>
-														<option value="DE">Oaxaca</option>
-														<option value="WV">Puebla</option>
-														<option value="WV">Querétaro</option>
-
-														<option value="WV">San Luis Potosí</option>
-														<option value="WV">Sonora</option>
-														<option value="WV">Tabasco</option>
-														<option value="WV">Tamaulipas</option>
-
-														<option value="WV">Yucatan</option>
-														<option value="WV">Zacatecas</option>
-														<option value="WV">Extranjero</option>
-													
-												</select>
-											</div>
-										</div>
-
-					                	<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CALLE:</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" placeholder="...">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">COLONIA:</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" placeholder="...">
-											</div>
-
-										</div>
-
-
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">NÚMERO:</label>
-											<div class="col-lg-9">
-												<div class="row">
-													<div class="col-md-6">
-														<input type="text" placeholder="Numero exterior" class="form-control">
-													</div>
-
-													<div class="col-md-6">
-														<input type="text" placeholder="Numero interior" class="form-control">
-													</div>
-
-													<div class="col-md-6">
-														<input type="text" placeholder="Código Postal" class="form-control">
-													</div>
-												</div>
-											</div>
-										</div>
-
-						
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">ENTRE CALLE:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="..." class="form-control">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">DESCRIPCIÓN DE LA VIVIENDA:</label>
-											<div class="col-lg-9">
-												<textarea rows="5" cols="5" class="form-control" placeholder="..."></textarea>
-											</div>
-										</div>
-									</fieldset>
+						<!-- Traffic sources -->
+						<div class="card">
+							<div class="card-header header-elements-inline">
+								<h6 class="card-title">Visitantes</h6>
+								<div class="header-elements">
+									<div class="form-check form-check-right form-check-switchery form-check-switchery-sm">
+										<label class="form-check-label">
+											Carga en vivo:
+											<input type="checkbox" class="form-input-switchery" checked data-fouc>
+										</label>
+									</div>
 								</div>
 							</div>
 
-							<div class="text-right">
-								<button type="submit" class="btn btn-primary">Guardar <i class="icon-paperplane ml-2"></i></button>
+							<div class="card-body py-0">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="d-flex align-items-center justify-content-center mb-2">
+											<a href="#" class="btn bg-transparent border-teal text-teal rounded-round border-2 btn-icon mr-3">
+												<i class="icon-plus3"></i>
+											</a>
+											<div>
+												<div class="font-weight-semibold">Nuevos visitantes</div>
+												<span class="text-muted">2,349 avg</span>
+											</div>
+										</div>
+										<div class="w-75 mx-auto mb-3" id="new-visitors"></div>
+									</div>
+
+									<div class="col-sm-4">
+										<div class="d-flex align-items-center justify-content-center mb-2">
+											<a href="#" class="btn bg-transparent border-warning-400 text-warning-400 rounded-round border-2 btn-icon mr-3">
+												<i class="icon-watch2"></i>
+											</a>
+											<div>
+												<div class="font-weight-semibold">Personas interesadas</div>
+												<span class="text-muted">08:20 avg</span>
+											</div>
+										</div>
+										<div class="w-75 mx-auto mb-3" id="new-sessions"></div>
+									</div>
+
+									<div class="col-sm-4">
+										<div class="d-flex align-items-center justify-content-center mb-2">
+											<a href="#" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon mr-3">
+												<i class="icon-people"></i>
+											</a>
+											<div>
+												<div class="font-weight-semibold">Personas online</div>
+												<span class="text-muted"><span class="badge badge-mark border-success mr-2"></span> 5,378 avg</span>
+											</div>
+										</div>
+										<div class="w-75 mx-auto mb-3" id="total-online"></div>
+									</div>
+								</div>
 							</div>
-						</form>
+
+							<div class="chart position-relative" id="traffic-sources"></div>
+						</div>
+						<!-- /traffic sources -->
+
+					</div>
+
+					<div class="col-xl-5">
+
+						<!-- Sales stats -->
+						<div class="card">
+							<div class="card-header header-elements-inline">
+								<h6 class="card-title">Estadísticas</h6>
+								<div class="header-elements">
+									<select class="form-control" id="select_date" data-fouc>
+										<option value="val1">Sep, 29 - Oct, 5</option>
+										<option value="val2">Sep, 22 - Sep 28</option>
+										<option value="val3" selected>Sep, 15 - Sep, 21</option>
+										<option value="val4">Sep, 8 - Sep, 14</option>
+									</select>
+			                	</div>
+							</div>
+
+							<div class="card-body py-0">
+								<div class="row text-center">
+									<div class="col-4">
+										<div class="mb-3">
+											<h5 class="font-weight-semibold mb-0">5,689</h5>
+											<span class="text-muted font-size-sm">Nuevos visitantes</span>
+										</div>
+									</div>
+
+									<div class="col-4">
+										<div class="mb-3">
+											<h5 class="font-weight-semibold mb-0">32,568</h5>
+											<span class="text-muted font-size-sm">Mes pasado</span>
+										</div>
+									</div>
+
+									<div class="col-4">
+										<div class="mb-3">
+											<h5 class="font-weight-semibold mb-0">$23,464</h5>
+											<span class="text-muted font-size-sm">Expectantes</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="chart mb-2" id="app_sales"></div>
+							<div class="chart" id="monthly-sales-stats"></div>
+						</div>
+						<!-- /sales stats -->
+
 					</div>
 				</div>
-				<!-- /2 columns form -->
+				<!-- /main charts -->
+
+
+				<!-- Dashboard content -->
+				<div class="row">
+					<div class="col-xl-8">
+
+						<!-- Marketing campaigns -->
+						<div class="card">
+							<div class="card-header header-elements-sm-inline">
+								<h6 class="card-title">Rendimiento Escolar</h6>
+								<div class="header-elements">
+									<span class="badge bg-success badge-pill">28 active</span>
+									<div class="list-icons ml-3">
+				                		<div class="list-icons-item dropdown">
+				                			<a href="#" class="list-icons-item dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+											<div class="dropdown-menu">
+												<a href="#" class="dropdown-item"><i class="icon-sync"></i> Datos</a>
+												<a href="#" class="dropdown-item"><i class="icon-list-unordered"></i>Detalles</a>
+												<a href="#" class="dropdown-item"><i class="icon-pie5"></i> Estadísticas</a>
+												<div class="dropdown-divider"></div>
+												<a href="#" class="dropdown-item"><i class="icon-cross3"></i>Limpiar Lista</a>
+											</div>
+				                		</div>
+				                	</div>
+			                	</div>
+							</div>
+
+							
+
+							<div class="card-body d-sm-flex align-items-sm-center justify-content-sm-between flex-sm-wrap">
+								<div class="d-flex align-items-center mb-3 mb-sm-0">
+									<div id="campaigns-donut"></div>
+									<div class="ml-3">
+										<h5 class="font-weight-semibold mb-0">38,289 <span class="text-success font-size-sm font-weight-normal"><i class="icon-arrow-up12"></i> (+16.2%)</span></h5>
+										<span class="badge badge-mark border-success mr-1"></span> <span class="text-muted">May 12, 12:30 am</span>
+									</div>
+								</div>
+
+								<div class="d-flex align-items-center mb-3 mb-sm-0">
+									<div id="campaign-status-pie"></div>
+									<div class="ml-3">
+										<h5 class="font-weight-semibold mb-0">2,458 <span class="text-danger font-size-sm font-weight-normal"><i class="icon-arrow-down12"></i> (-4.9%)</span></h5>
+										<span class="badge badge-mark border-danger mr-1"></span> <span class="text-muted">Oct 4, 4:00 am</span>
+									</div>
+								</div>
+
+								<div>
+									<a href="#" class="btn bg-indigo-300"><i class="icon-statistics mr-2"></i> Ver reporte</a>
+								</div>
+							</div>
+
+							<div class="table-responsive">
+								<table class="table text-nowrap">
+									<thead>
+										<tr>
+											<th>Grupo</th>
+											<th>Materia</th>
+											<th>Progreso</th>
+											<th>Alumnos</th>
+											<th>Status</th>
+											<th class="text-center" style="width: 20px;"><i class="icon-arrow-down12"></i></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="table-active table-border-double">
+											<td colspan="5">Hoy</td>
+											<td class="text-right">
+												<span class="progress-meter" id="today-progress" data-progress="30"></span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex align-items-center">
+													<div class="mr-3">
+														<a href="#">
+															<img src="assets/images/brands/facebook.png" class="rounded-circle" width="32" height="32" alt="">
+														</a>
+													</div>
+													<div>
+														<a href="#" class="text-default font-weight-semibold">Grupo 1- ITI</a>
+														<div class="text-muted font-size-sm">
+															<span class="badge badge-mark border-blue mr-1"></span>
+															02:00 - 03:00
+														</div>
+													</div>
+												</div>
+											</td>
+											<td><span class="text-muted">TIC's</span></td>
+											<td><span class="text-success-600"><i class="icon-stats-growth2 mr-2"></i> 2.43%</span></td>
+											<td><h6 class="font-weight-semibold mb-0">33</h6></td>
+											<td><span class="badge bg-blue">Active</span></td>
+											<td class="text-center">
+												<div class="list-icons">
+													<div class="list-icons-item dropdown">
+														<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a href="#" class="dropdown-item"><i class="icon-file-stats"></i> View statement</a>
+															<a href="#" class="dropdown-item"><i class="icon-file-text2"></i> Edit campaign</a>
+															<a href="#" class="dropdown-item"><i class="icon-file-locked"></i> Disable campaign</a>
+															<div class="dropdown-divider"></div>
+															<a href="#" class="dropdown-item"><i class="icon-gear"></i> Settings</a>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex align-items-center">
+													<div class="mr-3">
+														<a href="#">
+															<img src="assets/images/brands/youtube.png" class="rounded-circle" width="32" height="32" alt="">
+														</a>
+													</div>
+													<div>
+														<a href="#" class="text-default font-weight-semibold">Grupo 2- PYMES</a>
+														<div class="text-muted font-size-sm">
+															<span class="badge badge-mark border-danger mr-1"></span>
+															13:00 - 14:00
+														</div>
+													</div>
+												</div>
+											</td>
+											<td><span class="text-muted">Administración</span></td>
+											<td><span class="text-success-600"><i class="icon-stats-growth2 mr-2"></i> 3.12%</span></td>
+											<td><h6 class="font-weight-semibold mb-0">30</h6></td>
+											<td><span class="badge bg-danger">Bajo</span></td>
+											<td class="text-center">
+												<div class="list-icons">
+													<div class="list-icons-item dropdown">
+														<a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a href="#" class="dropdown-item"><i class="icon-file-stats"></i> View statement</a>
+															<a href="#" class="dropdown-item"><i class="icon-file-text2"></i> Edit campaign</a>
+															<a href="#" class="dropdown-item"><i class="icon-file-locked"></i> Disable campaign</a>
+															<div class="dropdown-divider"></div>
+															<a href="#" class="dropdown-item"><i class="icon-gear"></i> Settings</a>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- /marketing campaigns -->
+
+
+						<!-- Quick stats boxes -->
+						<div class="row">
+							<div class="col-lg-4">
+
+								<!-- Members online -->
+								<div class="card bg-teal-400">
+									<div class="card-body">
+										<div class="d-flex">
+											<h3 class="font-weight-semibold mb-0">3,450</h3>
+											<span class="badge bg-teal-800 badge-pill align-self-center ml-auto">+53,6%</span>
+					                	</div>
+					                	
+					                	<div>
+											Vistas del año
+											<div class="font-size-sm opacity-75">489 avg</div>
+										</div>
+									</div>
+
+									<div class="container-fluid">
+										<div id="members-online"></div>
+									</div>
+								</div>
+								<!-- /members online -->
+
+							</div>
+
+							<div class="col-lg-4">
+
+								<!-- Current server load -->
+								<div class="card bg-pink-400">
+									<div class="card-body">
+										<div class="d-flex">
+											<h3 class="font-weight-semibold mb-0">49.4%</h3>
+											<div class="list-icons ml-auto">
+						                		<div class="list-icons-item dropdown">
+						                			<a href="#" class="list-icons-item dropdown-toggle" data-toggle="dropdown"><i class="icon-cog3"></i></a>
+													<div class="dropdown-menu dropdown-menu-right">
+														<a href="#" class="dropdown-item"><i class="icon-sync"></i> Update data</a>
+														<a href="#" class="dropdown-item"><i class="icon-list-unordered"></i> Detailed log</a>
+														<a href="#" class="dropdown-item"><i class="icon-pie5"></i> Statistics</a>
+														<a href="#" class="dropdown-item"><i class="icon-cross3"></i> Clear list</a>
+													</div>
+						                		</div>
+					                		</div>
+					                	</div>
+					                	
+					                	<div>
+											Concurrentes
+											<div class="font-size-sm opacity-75">34.6% avg</div>
+										</div>
+									</div>
+
+									<div id="server-load"></div>
+								</div>
+								<!-- /current server load -->
+
+							</div>
+
+							<div class="col-lg-4">
+
+								<!-- Today's revenue -->
+								<div class="card bg-blue-400">
+									<div class="card-body">
+										<div class="d-flex">
+											<h3 class="font-weight-semibold mb-0">$18,390</h3>
+											<div class="list-icons ml-auto">
+						                		<a class="list-icons-item" data-action="reload"></a>
+						                	</div>
+					                	</div>
+					                	
+					                	<div>
+											Hoy
+											<div class="font-size-sm opacity-75">$2398 avg</div>
+										</div>
+									</div>
+
+									<div id="today-revenue"></div>
+								</div>
+								<!-- /today's revenue -->
+
+							</div>
+						</div>
+						<!-- /quick stats boxes -->
+
+
+						
+
+
+						<!-- Latest posts -->
+						<div class="card">
+							
+
+							<div class="card-body pb-0">
+								<div class="row">
+									<div class="col-xl-6">
+										<h6 class="card-title">Clima</h6>
+										<div id="cont_37f52a4439beb1b2a2086af0a55f0a58"><script type="text/javascript" async src="https://www.meteored.mx/wid_loader/37f52a4439beb1b2a2086af0a55f0a58"></script></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /latest posts -->
+
+
+
+
+
+
+
+						
+
+					</div>
+
+					<div class="col-xl-4">
+
+						<!-- Progress counters -->
+						<div class="row">
+							<div class="col-sm-6">
+
+								<!-- Available hours -->
+								<div class="card text-center">
+									<div class="card-body">
+
+					                	<!-- Progress counter -->
+										<div class="svg-center position-relative" id="hours-available-progress"></div>
+										<!-- /progress counter -->
+
+
+										<!-- Bars -->
+										<div id="hours-available-bars"></div>
+										<!-- /bars -->
+
+									</div>
+								</div>
+								<!-- /available hours -->
+
+							</div>
+
+							<div class="col-sm-6">
+
+								<!-- Productivity goal -->
+								<div class="card text-center">
+									<div class="card-body">
+
+										<!-- Progress counter -->
+										<div class="svg-center position-relative" id="goal-progress"></div>
+										<!-- /progress counter -->
+
+										<!-- Bars -->
+										<div id="goal-bars"></div>
+										<!-- /bars -->
+
+									</div>
+								</div>
+								<!-- /productivity goal -->
+
+							</div>
+						</div>
+						<!-- /progress counters -->
+
+
+					
+
+
+						
+
+
+
+					</div>
+				</div>
+				<!-- /dashboard content -->
 
 			</div>
 			<!-- /content area -->

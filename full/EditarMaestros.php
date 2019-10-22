@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+	<STYLE type="text/css">
+		:root{
+			--black: black;
+		}
+  		 button.boton{
+  		 	padding: auto;
+  		 	margin-left: 880px;
+			background: #fff;
+			color: #000;
+			border-radius: 6px;
+			width: 150px;
+			height: 50px;
+			border: 2px solid var(--black);
+  		}
+
+  		 
+	</STYLE>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,17 +42,18 @@
 	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
-	<script src="https://maps.google.com/maps/api/js?key=AIzaSyAPQXi7ZBZ73SPXi7JfHycSCi30thvQGCg&amp;libraries=places"></script>
-
-	<script src="../../../../global_assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/typeahead_addresspicker.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/autocomplete_addresspicker.js"></script>
-	<script src="../../../../global_assets/js/plugins/pickers/location/location.js"></script>
-	<script src="../../../../global_assets/js/plugins/ui/prism.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/notifications/bootbox.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/pickers/color/spectrum.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+	<script src="../../../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script src="assets/js/app.js"></script>
-	<script src="../../../../global_assets/js/demo_pages/picker_location.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/datatables_basic.js"></script>
+
+	<script src="../../../../global_assets/js/demo_pages/picker_color.js"></script>
+	<script src="../../../../global_assets/js/demo_pages/components_modals.js"></script>
 	<!-- /theme JS files -->
 
 </head>
@@ -409,7 +429,7 @@
 						<!-- Main -->
 						<li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
 						<li class="nav-item">
-							<a href="index.html" class="nav-link">
+							<a href="index2.php" class="nav-link">
 								<i class="icon-home4"></i>
 								<span>
 									Dashboard
@@ -417,27 +437,44 @@
 								</span>
 							</a>
 						</li>
+
+						<!-- /main -->
+
 						
-						<li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-							<a href="#" class="nav-link"><i class="icon-select2"></i> <span>Maestros</span></a>
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-user-tie"></i> <span>Maestros</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Pickers">
 								
-								<li class="nav-item"><a href="picker_location.html" class="nav-link active">Agregar Maestros</a></li>
-								<li class="nav-item"><a href="picker_color.html" class="nav-link">Editar Maestros</a></li>
+								<li class="nav-item"><a href="EditarMaestros.php" class="nav-link">Editar Maestros</a></li>
+								
 							</ul>
 						</li>
 						<li class="nav-item nav-item-submenu">
-							<a href="#" class="nav-link"><i class="icon-insert-template"></i> <span>Alumnos</span></a>
+							<a href="#" class="nav-link"><i class="icon-users4"></i> <span>Alumnos</span></a>
 							<ul class="nav nav-group-sub" data-submenu-title="Form layouts">
 								
-								<li class="nav-item"><a href="form_layout_horizontal.html" class="nav-link">Agregar Alumnos</a></li>
-								<li class="nav-item"><a href="form_layout_vertical.html" class="nav-link">Editar Alumnos</a></li>
+								<!--<li class="nav-item"><a href="form_layout_vertical_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>-->
+								<li class="nav-item-divider"></li>
+								<li class="nav-item"><a href="AgregarAlumnos.php" class="nav-link">Agregar Alumnos</a></li>
+								<!--<li class="nav-item"><a href="form_layout_horizontal_styled.html" class="nav-link disabled">Custom styles <span class="badge bg-transparent align-self-center ml-auto">Coming soon</span></a></li>-->
+								<li class="nav-item"><a href="EditarAlumnos.php" class="nav-link">Editar Alumnos</a></li>
+							</ul>
+						</li>
+
+
+
+
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link"><i class="icon-grid"></i> <span>Módulos</span></a>
+							<ul class="nav nav-group-sub" data-submenu-title="Basic components">
+								<li class="nav-item"><a href="ListadoDeMaterias.php" class="nav-link">Materias</a></li>
+								<li class="nav-item"><a href="Grupos.php" class="nav-link">Grupos</a></li>
 								
 							</ul>
 						</li>
 						<!-- /forms -->
 
-					
+						
 
 					</ul>
 				</div>
@@ -457,7 +494,7 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Pickers</span> - Location</h4>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Editar</span> - Maestros</h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 
@@ -474,8 +511,8 @@
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="picker_location.html" class="breadcrumb-item">Pickers</a>
-							<span class="breadcrumb-item active">Location</span>
+							<a href="picker_color.html" class="breadcrumb-item">Editar Maestros</a>
+							
 						</div>
 
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -508,15 +545,235 @@
 			</div>
 			<!-- /page header -->
 
+			<!-- Danger modal -->
+				<div id="modal_theme_danger" class="modal fade" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header bg-danger">
+								<h6 class="modal-title">Eliminar Maestro</h6>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<div class="modal-body">
+								
+								<p>¿Está seguro de que desea eliminar a éste maestro?</p>
+
+								<!--<hr>
+
+								<h6 class="font-weight-semibold">Another paragraph</h6>
+								<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+								<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>-->
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn bg-danger">Eliminar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /default modal -->
+
+				<!-- Horizontal form modal -->
+				<div id="modal_form_h" class="modal fade" tabindex="-1">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Agregar Maestro</h5>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<form action="#" class="form-horizontal">
+								<div class="modal-body">
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Nombre(s)</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Eugene" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Apellidos</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Kopyov" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Correo Electronico</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="eugene@kopyov.com" class="form-control">
+											
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Celular #</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" class="form-control">
+											
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Dirección</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Ring street 12, building D, flat #67" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Clave</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="746573" class="form-control">
+										</div>
+									</div>
+									
+
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Título</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Ingeniero" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Habilidades</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="..." class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Certificaciones</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="..." class="form-control">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">RFC</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="..." class="form-control">
+										</div>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn bg-primary">Guardar Cambios</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- /horizontal form modal -->
+
+
+
+				<!-- Horizontal form modal -->
+				<div id="modal_form_horizontal" class="modal fade" tabindex="-1">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Editar Maestro</h5>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<form action="#" class="form-horizontal">
+								<div class="modal-body">
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Nombre(s)</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Eugene" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Apellidos</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Kopyov" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Correo Electronico</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="eugene@kopyov.com" class="form-control">
+											
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Celular #</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" class="form-control">
+											
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Dirección</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Ring street 12, building D, flat #67" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Clave</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="746573" class="form-control">
+										</div>
+									</div>
+									
+
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Título</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="Ingeniero" class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Habilidades</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="..." class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">Certificaciones</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="..." class="form-control">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-form-label col-sm-3">RFC</label>
+										<div class="col-sm-9">
+											<input type="text" placeholder="..." class="form-control">
+										</div>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn bg-primary">Guardar Cambios</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- /horizontal form modal -->
+
 
 			<!-- Content area -->
 			<div class="content">
 
-
-				<!-- 2 columns form -->
+				<!-- Basic datatable -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title"></h5>
+						<h5 class="card-title">Editar Maestros</h5>
 						<div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
@@ -526,246 +783,148 @@
 	                	</div>
 					</div>
 
-					<div class="card-body">
-						<form action="#">
-							<div class="row">
-								<div class="col-md-6">
-									<fieldset>
-										<legend class="font-weight-semibold"><i class="icon-reading mr-2"></i>INFORMACIÓN PERSONAL</legend>
 
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">NOMBRE:</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" placeholder="Eugene Kopyov">
-											</div>
-										</div>
 
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CARRERA:</label>
-											<div class="col-lg-9">
-												<select data-placeholder="Selecciona tu carrera" class="form-control form-control-select2" data-fouc>
-													<option></option>
-													
-														<option value="AK">ITI</option>
-														<option value="HI">ISA</option>
-													
-													
-														<option value="CA">PYMES</option>
-														<option value="NV">MECATRONICA</option>
-														<option value="WA">MANUFACTURA</option>
-													
-													
-												</select>
-											</div>
-										</div>
+					
+					<tr>
+								
+						<td><button type="button" class="boton" data-toggle="modal" data-target="#modal_form_h">Agregar Maestro<i class="icon-play3 ml-2"></i></button></td>
+								
+					</tr>
+						
 
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">MATRÍCULA:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="1930030" class="form-control">
-											</div>
-										</div>
+					
 
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CUATRIMESTRE:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="" class="form-control">
-											</div>
-										</div>
+					
 
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CORREO ELECTRÓNICO:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="eugene@kopyov.com" class="form-control">
-											</div>
-										</div>
+					<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Primer Nombre</th>
+								<th>Apellidos</th>
+								<th>Carrera que imparte</th>
+								<th>Celular</th>
+								<th>Correo</th>
+								<th class="text-center">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Diana Gabriela</td>
+								<td>González Reyes</td>
+								<td>Tecnologías de la Información</td>
+								<td>8347568923</td>
+								<td>alguien@gmail.com</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
 
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CONTRASEÑA:</label>
-											<div class="col-lg-9">
-												<input type="password" class="form-control" placeholder="Contraseña">
-											</div>
-										</div>
-
-										
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">FECHA DE NACIMIENTO:</label>
-											<div class="col-lg-9">
-												<input type="date" class="form-control">
-											</div>
-										</div>
-
-										
-
-										<!-- <div class="form-group row">
-											<label class="col-lg-3 col-form-label">SEXO:</label>
-											<div class="col-lg-9">
-												<div class="row">
-													
-
-													<div class="col-md-6">
-														<div class="form-group">
-															<select class="form-control form-control-lg" >
-																<option value="opt0"></option>
-							                                    <option value="opt1">Mujer</option>
-							                                    <option value="opt2">Hombre</option>
-							                                    
-							                                </select>
-														</div>
-	
-													</div>
-												</div>
-											</div>
-										</div> -->
-
-										<div class="form-group row">
-										<label class="col-lg-3 col-form-label">SEXO:</label>
-											<div class="col-lg-9">
-												<div class="form-check form-check-inline">
-													<label class="form-check-label">
-														<input type="radio" class="form-input-styled" name="gender" checked data-fouc>
-														Hombre
-													</label>
-												</div>
-
-												<div class="form-check form-check-inline">
-													<label class="form-check-label">
-														<input type="radio" class="form-input-styled" name="gender" data-fouc>
-														Mujer
-													</label>
+											<div class="dropdown-menu dropdown-menu-right">
+												<div class="table-responsive">
+													<table class="table">
+														<a href="#" class="dropdown-item" class="btn btn-light" data-toggle="modal" data-target="#modal_form_horizontal"><i class="icon-file-text2" ></i> Editar Datos</a>
+														<a href="#" class="dropdown-item" class="btn bg-danger" data-toggle="modal" data-target="#modal_theme_danger"><i class="icon-cross2 text-danger-400"></i> Eliminar</a>
+														
+														<!--<tr>
+															<td>Danger modal header</td>
+															<td><button type="button" class="btn bg-danger" data-toggle="modal" data-target="#modal_theme_danger">Launch <i class="icon-cross2 text-danger-400"></i></button></td>
+															
+														</tr>-->
+													</table>
 												</div>
 											</div>
 										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Cielo Merari</td>
+								<td>Pulido Quintanilla</td>
+								<td>Administración y Gestión Empresarial</td>
+								<td>8349845234</td>
+								<td>alguien@gmail.com</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
 
-
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">FOTOGRAFÍA:</label>
-											<div class="col-lg-9">
-												<input type="file" class="form-input-styled" data-fouc>
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item" class="btn btn-light" data-toggle="modal" data-target="#modal_form_horizontal"><i class="icon-file-text2" ></i> Editar Datos</a>
+												<a href="#" class="dropdown-item" class="btn bg-danger" data-toggle="modal" data-target="#modal_theme_danger"><i class="icon-cross2 text-danger-400"></i> Eliminar</a>
+												
 											</div>
 										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">HOBBIES:</label>
-											<div class="col-lg-9">
-												<textarea rows="5" cols="5" class="form-control" placeholder="..."></textarea>
-											</div>
-										</div>
+									</div>
+								</td>
+							</tr>
 							
-					</div>
+							<tr>
+								<td>Nathalie</td>
+								<td>Perez Monrreal</td>
+								<td>Mecatrónica</td>
+								<td>8345798294</td>
+								<td>alguien@gmail.com</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
 
-								<div class="col-md-6">
-						
-									
-									<fieldset>
-					                	<legend class="font-weight-semibold"><i class="icon-truck mr-2"></i> INFORMACIÓN DEL DOMICILIO</legend>
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item" class="btn btn-light" data-toggle="modal" data-target="#modal_form_horizontal"><i class="icon-file-text2" ></i> Editar Datos</a>
 
-					                	<div class="form-group row">
-											<label class="col-lg-3 col-form-label">ESTADO:</label>
-											<div class="col-lg-9">
-												<select data-placeholder="Selecciona tu estado" class="form-control form-control-select2" data-fouc>
-													<option></option>
-													
-														<option value="AK">Aguascalientes</option>
-														<option value="HI">Baja California</option>
-													
-													
-														<option value="CA">Colima</option>
-														<option value="NV">Chiapas</option>
-														<option value="WA">Ciudad de México</option>
-													
-													
-														<option value="AZ">Durango</option>
-														<option value="CO">Guerrero</option>
-														<option value="WY">Hidalgo</option>
-													
-													
-														<option value="AL">Jalisco</option>
-														<option value="AR">Morelos</option>
-														<option value="KY">Nayarit</option>
-													
-													
-														<option value="CT">Nuevo León</option>
-														<option value="DE">Oaxaca</option>
-														<option value="WV">Puebla</option>
-														<option value="WV">Querétaro</option>
+												<!--<tr>
+													<td>Horizontal form</td>
+													<td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal_form_horizontal">Launch <i class="icon-play3 ml-2"></i></button></td>
+													<td>Modal with horizontal form layout. It does also support responsive grid, but in this case it will look best in wider modals</td>
+												</tr>-->
 
-														<option value="WV">San Luis Potosí</option>
-														<option value="WV">Sonora</option>
-														<option value="WV">Tabasco</option>
-														<option value="WV">Tamaulipas</option>
-
-														<option value="WV">Yucatan</option>
-														<option value="WV">Zacatecas</option>
-														<option value="WV">Extranjero</option>
-													
-												</select>
+												
+												<a href="#" class="dropdown-item" class="btn bg-danger" data-toggle="modal" data-target="#modal_theme_danger"><i class="icon-cross2 text-danger-400"></i> Eliminar</a>
+												
 											</div>
 										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Sharon</td>
+								<td>Leland Xibille</td>
+								<td>Tecnologías de Manufactura</td>
+								<td>8345689456</td>
+								<td>alguien@gmail.com</td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
 
-					                	<div class="form-group row">
-											<label class="col-lg-3 col-form-label">CALLE:</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" placeholder="...">
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item" class="btn btn-light" data-toggle="modal" data-target="#modal_form_horizontal"><i class="icon-file-text2" ></i> Editar Datos</a>
+												<a href="#" class="dropdown-item" class="btn bg-danger" data-toggle="modal" data-target="#modal_theme_danger"><i class="icon-cross2 text-danger-400"></i> Eliminar</a>
+												
 											</div>
 										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">COLONIA:</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" placeholder="...">
-											</div>
-
-										</div>
-
-
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">NÚMERO:</label>
-											<div class="col-lg-9">
-												<div class="row">
-													<div class="col-md-6">
-														<input type="text" placeholder="Numero exterior" class="form-control">
-													</div>
-
-													<div class="col-md-6">
-														<input type="text" placeholder="Numero interior" class="form-control">
-													</div>
-
-													<div class="col-md-6">
-														<input type="text" placeholder="Código Postal" class="form-control">
-													</div>
-												</div>
-											</div>
-										</div>
-
-						
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">ENTRE CALLE:</label>
-											<div class="col-lg-9">
-												<input type="text" placeholder="..." class="form-control">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">DESCRIPCIÓN DE LA VIVIENDA:</label>
-											<div class="col-lg-9">
-												<textarea rows="5" cols="5" class="form-control" placeholder="..."></textarea>
-											</div>
-										</div>
-									</fieldset>
-								</div>
-							</div>
-
-							<div class="text-right">
-								<button type="submit" class="btn btn-primary">Guardar <i class="icon-paperplane ml-2"></i></button>
-							</div>
-						</form>
-					</div>
+									</div>
+								</td>
+							</tr>
+								
+						</tbody>
+					</table>
 				</div>
-				<!-- /2 columns form -->
+				<!-- /basic datatable -->
+
+				
+
+
+				
 
 			</div>
 			<!-- /content area -->
